@@ -29,7 +29,6 @@ namespace FalconBMS_Alternative_Launcher_Cs
         public MainWindow()
         {
             InitializeComponent();
-
             this.MouseWheel += Detect_MouseWheel;
         }
 
@@ -45,6 +44,7 @@ namespace FalconBMS_Alternative_Launcher_Cs
         private DispatcherTimer KeyMappingTimer = new DispatcherTimer();
         
         public static bool FLG_YAME64 = false;
+        private bool inSaveDialog = false;
 
         /// <summary>
         /// Execute when launching this app.

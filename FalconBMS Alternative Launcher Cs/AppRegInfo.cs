@@ -14,7 +14,7 @@ namespace FalconBMS_Alternative_Launcher_Cs
         private Microsoft.Win32.RegistryKey regkey;
         private string regName = "SOFTWARE\\Wow6432Node\\Benchmark Sims\\Falcon BMS 4.33 U1";
         private Platform platform = Platform.OS_64bit;
-        private BMS_Version bms_Version = BMS_Version.BMS433U1;
+        private BMS_Version bms_Version = BMS_Version.BMS434;
         private OverrideSetting overRideSetting;
 
         private string installDir;
@@ -73,7 +73,7 @@ namespace FalconBMS_Alternative_Launcher_Cs
             }
 
             // User defined BMS version
-            if (option.ContainsKey("/bms") == true)
+            //if (option.ContainsKey("/bms") == true)
             {
                 switch (option["/bms"])
                 {

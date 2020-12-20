@@ -167,17 +167,9 @@ namespace FalconBMS_Alternative_Launcher_Cs
             ds.Close();
         }
 
-        /// <summary>
-        /// As the name inplies...
-        /// </summary>
-        protected void SaveKeyMapping(Hashtable inGameAxis, DeviceControl deviceControl, KeyFile keyFile)
+        public void SaveKeyFile(Hashtable inGameAxis, DeviceControl deviceControl, KeyFile keyFile, string filename)
         {
-            string filename = appReg.GetInstallDir() + "/User/Config/" + appReg.getKeyFileName();
-            string fbackupname = appReg.GetInstallDir() + "/User/Config/Backup/" + appReg.getKeyFileName();
-            if (!System.IO.File.Exists(fbackupname))
-                System.IO.File.Copy(filename, fbackupname, true);
-
-            System.IO.File.SetAttributes(filename, System.IO.File.GetAttributes(filename) & (~System.IO.FileAttributes.ReadOnly));
+            
 
             System.IO.StreamWriter sw = new System.IO.StreamWriter
                 (filename, false, System.Text.Encoding.GetEncoding("utf-8"));
@@ -187,10 +179,23 @@ namespace FalconBMS_Alternative_Launcher_Cs
             {
                 sw.Write(deviceControl.joyAssign[i].GetKeyLineDX(i, deviceControl.devList.Count));
                 // PRIMARY DEVICE POV
-                if (((InGameAxAssgn)inGameAxis["Roll"]).GetDeviceNumber() == i) 
+                if (((InGameAxAssgn)inGameAxis["Roll"]).GetDeviceNumber() == i)
                     sw.Write(deviceControl.joyAssign[i].GetKeyLinePOV());
             }
             sw.Close();
+        }
+
+        /// <summary>
+        /// As the name inplies...
+        /// </summary>
+        protected void SaveKeyMapping(Hashtable inGameAxis, DeviceControl deviceControl, KeyFile keyFile)
+        {
+            string filename = appReg.GetInstallDir() + "/User/Config/" + appReg.getKeyFileName();
+            string fbackupname = appReg.GetInstallDir() + "/User/Config/Backup/" + appReg.getKeyFileName();
+            if (!System.IO.File.Exists(fbackupname))
+                System.IO.File.Copy(filename, fbackupname, true);
+            System.IO.File.SetAttributes(filename, System.IO.File.GetAttributes(filename) & (~System.IO.FileAttributes.ReadOnly));
+            SaveKeyFile(inGameAxis, deviceControl, keyFile, filename);
         }
 
         /// <summary>

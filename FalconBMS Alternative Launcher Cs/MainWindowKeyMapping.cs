@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -199,7 +200,10 @@ namespace FalconBMS_Alternative_Launcher_Cs
                 int Rows = KeyMappingGrid.SelectedIndex;
                 if (Rows == -1 | statusSearch == Search.Search)
                 {
-                    JumptoAssignedKey();
+                    if (!this.inSaveDialog)
+                    {
+                        JumptoAssignedKey();
+                    }
                     return;
                 }
                 if (KeyMappingGrid.CurrentColumn == null)
@@ -278,8 +282,7 @@ namespace FalconBMS_Alternative_Launcher_Cs
                 System.IO.StreamWriter sw = new System.IO.StreamWriter(appReg.GetInstallDir() + "\\Error.txt", false, System.Text.Encoding.GetEncoding("shift_jis"));
                 sw.Write(ex.Message);
                 sw.Close();
-
-                MessageBox.Show("Error Log Saved To " + appReg.GetInstallDir() + "\\Error.txt", "WARNING", MessageBoxButton.OK, MessageBoxImage.Information);
+                System.Windows.MessageBox.Show("Error Log Saved To " + appReg.GetInstallDir() + "\\Error.txt", "WARNING", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 this.Close();
             }
@@ -366,6 +369,10 @@ namespace FalconBMS_Alternative_Launcher_Cs
         /// </summary>
         private void KeyMappingGrid_KeyDown()
         {
+            if (this.inSaveDialog)
+            {
+                return;
+            }
             if (currentIndex < 0)
             {
                 currentIndex = 1;
@@ -511,6 +518,22 @@ namespace FalconBMS_Alternative_Launcher_Cs
                     Select_Invoke.Background = new SolidColorBrush(Color.FromArgb(0xFF, 0xF7, 0xF7, 0xF7));
                     break;
             }
+        }
+
+        private void Save_As_Click(object sender, RoutedEventArgs e)
+        {
+            this.inSaveDialog = true;
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.InitialDirectory = this.appReg.GetInstallDir() + "\\User\\Config";
+            sfd.Filter = "BMS Key files|*.key";
+            sfd.OverwritePrompt = true;
+         
+            sfd.ShowDialog();
+            if (sfd.FileName != "")
+            {
+                this.appReg.getOverrideWriter().SaveKeyFile(inGameAxis, deviceControl, keyFile, sfd.FileName);
+            }
+            this.inSaveDialog = false;
         }
 
         /// <summary>

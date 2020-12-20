@@ -482,17 +482,18 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <Label Content="ASSIGNMENT " VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,32" VerticalAlignment="Bottom" RenderTransformOrigin="-4.878,1.143" FontWeight="Bold" Height="26" Width="89"/>
-                    <Label x:Name="Label_AssgnStatus" Content="KEYSEARCH MODE" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="114,0,0,32" VerticalAlignment="Bottom" RenderTransformOrigin="-4.878,1.143" FontStyle="Italic" Height="26" Width="886"/>
+                    <Label x:Name="Label_AssgnStatus" Content="KEYSEARCH MODE" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="114,0,0,32" VerticalAlignment="Bottom" RenderTransformOrigin="-4.878,1.143" FontStyle="Italic" Height="26" Width="683.333"/>
 
                     <ToggleButton x:Name="Select_PinkyShift" Content="KEYCOMBO / PINKYSHIFT" HorizontalAlignment="Right" Margin="0,12,253,0" VerticalAlignment="Top" Width="160" Height="27"/>
                     <ToggleButton x:Name="Select_DX_Release" Content="RELEASE" HorizontalAlignment="Right" Margin="0,12,164,0" VerticalAlignment="Top" Width="64" Height="27"/>
-                    <Button x:Name="Select_Invoke" Content="Invoke Both" HorizontalAlignment="Right" Margin="0,12,10,0" VerticalAlignment="Top" Width="129" Click="Select_Invoke_Click" Height="27"/>
+                    <Button x:Name="Select_Invoke" Content="Invoke Both" HorizontalAlignment="Right" Margin="0,12,10,0" VerticalAlignment="Top" Width="129" Click="Select_Invoke_Click" Height="27" Opacity="0.98"/>
                     <CheckBox x:Name="Misc_OverrideSelfCancel" Content="Use 3-Way ON-OFF-ON Switch for TQS: DOGFIGHT" FontSize="11" HorizontalAlignment="Left" Margin="10,0,0,9" VerticalAlignment="Bottom" Foreground="#FF606060" Height="18" Width="272"/>
                     <CheckBox x:Name="Misc_MouseCursorAnchor" Content="Anchor the Mouse Cursor to Clickable Switches or Dials." HorizontalAlignment="Left" Margin="300,0,0,9" VerticalAlignment="Bottom" Foreground="#FF606060" Height="18" Width="318"/>
 
                     <Label Content="*Click a row and press a joy key to Assign. Double Click a cell to Unassign" HorizontalContentAlignment="Right" HorizontalAlignment="Right" Margin="0,69,10,0" VerticalAlignment="Top" Width="596" Height="24"/>
                     <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Height="23" Margin="87,43,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="384" Background="#80F0F0F0" Foreground="#FF606060" />
                     <Button Content="Search" HorizontalAlignment="Left" Margin="476,43,0,0" VerticalAlignment="Top" Width="75" Click="Search_Click"/>
+                    <Button x:Name="Save_As" Content="Save Keyfile As" HorizontalAlignment="Right" Margin="0,601.21,10,0" VerticalAlignment="Top" Width="129" Click="Save_As_Click" Height="27"/>
                 </Grid>
             </TabItem>
             <TabItem Header=" VisualAcuity" x:Name="Tab_VisualAcuity">
